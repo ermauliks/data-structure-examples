@@ -2,6 +2,35 @@ var BinaryTree = function() {
   this._root = null;
 };
 
+BinaryTree.prototype.delete = function (root, data) {
+  var temp;
+  if(root === null) return root;
+  else if (data < root.data) 
+    root.left = this.delete(root.left, data);
+  else if (data > root.data)
+    root.right = this.delete(root.right, data);
+  else {
+    // Case1: leaf node
+    if (root.left === null && root.right === null) {
+      delete root;
+      root = null;
+    } else if (root.left === null) {
+      temp = root;
+      root = root.right;
+      delete temp;
+    } else if (root.right === null) {
+      temp = root;
+      root = root.left;
+      delete temp;
+    } else {
+      temp = this.findMin(root.right);
+      root.data = temp.data;
+      root.right = this.delete(root.right, temp.data);
+    }
+  }
+  return root;
+};
+
 BinaryTree.prototype.isBinarySearchTree = function(root) {
   return this.isBST(root, "A", "Z");
 };
@@ -14,9 +43,8 @@ BinaryTree.prototype.isBST = function(root, min, max) {
      this.isBST(root.right, root.data, max)
     )
     return true;
-  else {
+  else
     return false;
-  }
 };
 
 BinaryTree.prototype.findHeight = function() {
@@ -68,16 +96,16 @@ BinaryTree.prototype.traverseInorder = function() {
   return result;
 };
 
-BinaryTree.prototype.findMax = function() {
-  var current = this._root;  
+BinaryTree.prototype.findMax = function(root) {
+  var current = root;  
   while (current.right) {
     current = current.right;
   }
   return current.data;
 };
 
-BinaryTree.prototype.findMin = function() {
-  var current = this._root;  
+BinaryTree.prototype.findMin = function(root) {
+  var current = root;  
   while (current.left) {
     current = current.left;
   }
@@ -140,8 +168,16 @@ console.log(binaryTree.traverseLevel());
 console.log("Is BST?");
 console.log(binaryTree.isBinarySearchTree(binaryTree._root));
 
-console.log('Min ' + binaryTree.findMin());
+console.log('Min ' + binaryTree.findMin(binaryTree._root));
 
-console.log('Max ' + binaryTree.findMax());
+console.log('Max ' + binaryTree.findMax(binaryTree._root));
 
 console.log('Height ' + binaryTree.findHeight());
+
+console.log('Deleting ' + binaryTree.delete(binaryTree._root, "D"));
+
+console.log("In-order");
+console.log(binaryTree.traverseInorder());
+
+console.log("Level-order");
+console.log(binaryTree.traverseLevel());
