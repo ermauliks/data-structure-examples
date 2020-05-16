@@ -3,3 +3,5 @@
 - Binary search.
 - Binary search tree implementation.
 - Linked list. 
+- Trie Data Structure Example
+- Hash Map implementation
