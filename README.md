@@ -1,7 +1,10 @@
 # Data Structure with JavaScript
-- Balance Parentheses using Stack. e.g. () should be true but ({) is false.
-- Binary search.
-- Binary search tree implementation.
-- Linked list. 
-- Trie Data Structure Example
+- Binary search
+- Binary search tree implementation
+- Linked list 
+- Trie example
 - Hash Map implementation
+- Priority Queue
+- Stack (example: Balance Parentheses using Stack. e.g. () should be true but ({) is false)
+- Graph: Breath first search
+- Graph: Depth first search
