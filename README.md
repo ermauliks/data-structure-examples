@@ -8,3 +8,4 @@
 - Stack (example: Balance Parentheses using Stack. e.g. () should be true but ({) is false)
 - Graph: Breath first search
 - Graph: Depth first search
+- DOM Tree Traversal (getElementById, ...)
